@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Happy New Year 2025 - 1984 Batch" />
+    <meta
+      property="og:description"
+      content="Celebrating 40 Years of Togetherness"
+    />
+    <meta property="”og:image”" content="ogimage5.jpg" />
+    <title>Happy New Year 2025 - 1984 Batch</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+AU+VIC+Guides&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        color: #fff;
+        /* font-family: Arial, sans-serif; */
+        font-family: "Almendra", serif;
+        font-weight: 700;
+        font-style: normal;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .fireworks {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .heading {
+        font-size: 3rem;
+        color: #fbff0d;
+        text-align: center;
+        text-shadow: 0 0 10px #fbff0d, 0 0 20px #fbff0d;
+      }
+
+      .heading span {
+        display: inline-block;
+        animation: glow 1s infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 30px #00ff00, 0 0 40px #00ff00;
+        }
+        to {
+          text-shadow: 0 0 10px #fbff0d, 0 0 20px #fbff0d;
+        }
+      }
+
+      .bottom-text {
+        position: absolute;
+        bottom: 30px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #00ff00;
+        text-align: center;
+      }
+
+      @keyframes rise {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(-100vh);
+        }
+      }
+
+      @keyframes explode {
+        0% {
+          transform: scale(0.5);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(3);
+          opacity: 0;
+        }
+      }
+
+      .rocket {
+        position: absolute;
+        width: 10px;
+        height: 30px;
+        background: linear-gradient(180deg, #fbff0d, #ff4500);
+        border-radius: 50%;
+        animation: rise 2s linear forwards;
+      }
+
+      .sparkle {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #fbff0d;
+        border-radius: 50%;
+        animation: explode 1s ease-out forwards;
+      }
+
+      .wine-bottle {
+        position: absolute;
+        top: 5%;
+        display: flex;
+        justify-content: center;
+        width: 40%;
+        max-width: 180px;
+      }
+
+      .wine-bottle img {
+        width: 100%;
+        height: auto;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .wine-bottle {
+        animation: float 2s infinite alternate ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fireworks" id="fireworks"></div>
+
+    <div class="wine-bottle">
+      <img src="./wine2.png" alt="Wine Bottle and Glass Icon" />
+    </div>
+
+    <h1 class="heading animate__animated animate__zoomIn">
+      Happy New Year 2025<br /><span>Celebrating 40 Years of Togetherness</span>
+    </h1>
+
+    <div class="bottom-text">1984 to 2024 - 40 Years</div>
+
+    <script>
+      function createRocket() {
+        const rocket = document.createElement("div");
+        rocket.classList.add("rocket");
+        const x = Math.random() * (window.innerWidth - 20);
+        rocket.style.left = `${x}px`;
+        rocket.style.bottom = "0";
+        document.getElementById("fireworks").appendChild(rocket);
+
+        setTimeout(() => {
+          createExplosion(x, window.innerHeight * 0.5);
+          rocket.remove();
+        }, 2000);
+      }
+
+      function createExplosion(x, y) {
+        const numSparkles = 30;
+        for (let i = 0; i < numSparkles; i++) {
+          const sparkle = document.createElement("div");
+          sparkle.classList.add("sparkle");
+          const size = Math.random() * 4 + 2;
+          const angle = Math.random() * 2 * Math.PI;
+          const distance = Math.random() * 80 + 20;
+
+          sparkle.style.width = `${size}px`;
+          sparkle.style.height = `${size}px`;
+          sparkle.style.left = `${x}px`;
+          sparkle.style.bottom = `${y}px`;
+          sparkle.style.transform = `translate(${
+            distance * Math.cos(angle)
+          }px, ${distance * Math.sin(angle)}px)`;
+
+          document.getElementById("fireworks").appendChild(sparkle);
+
+          setTimeout(() => sparkle.remove(), 1000);
+        }
+      }
+
+      setInterval(createRocket, 1000);
+    </script>
+  </body>
+</html>
